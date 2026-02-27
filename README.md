@@ -55,17 +55,21 @@ Utilizei uma estrutura de variáveis mais limpa e centralizada para facilitar a 
 
 Este projeto é um fork evolutivo baseado no conteúdo de:
 
-* W3C - World Wide Web Consortium
+* [W3C - World Wide Web Consortium](http://w3c.org)
 
-* WAI - Web Acessibility Initiative
+* [WAI - Web Acessibility Initiative](https://www.w3.org/WAI/)
 
-* Figma Original do Projeto
+* [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/)
+
+* [Figma](https://www.figma.com/file/I3Q42CcVUziRN3iMfTrbfb/Stranger-Things?node-id=0%3A1)
+
+* [Demo](https://micheleambrosio.github.io/semana-frontend-mundo-invertido/) 
 
 ### ▶️ Aulas Originais (DIO)
 
-* Live Dia 01
+* [Live Dia 01](https://www.youtube.com/watch?v=FZgIQUDn8zo)
 
-* Live Dia 02
+* [Live Dia 02](https://www.youtube.com/watch?v=WHbhgxJLbN4)
 
 ### 🌎 Créditos aos Autores Originais
 
