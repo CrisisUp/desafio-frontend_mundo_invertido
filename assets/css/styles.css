@@ -1,21 +1,23 @@
-/* ========================================================
-   1. VARIÁVEIS E TEMAS
-   ======================================================== */
+/* =======================================================
+   1. VARIÁVEIS E TEMAS (DESIGN TOKENS)
+   ======================================================= */
 :root {
   /* Escala de Fontes */
-  --font-size-base: 1rem;      /* 16px - Texto padrão */
-  --font-size-small: 0.875rem; /* 14px - Labels e detalhes */
-  --font-size-p: 1.125rem;     /* 18px - Parágrafos (melhor leitura) */
-  --font-size-h3: 1.5rem;      /* 24px - Subtítulos */
-  --font-size-h2: 2.25rem;     /* 36px - Títulos de seção */
-  --font-size-h1: 3.5rem;      /* 56px - Título principal */
-  --font-size-btn: 1.1rem;     /* Texto dos botões */
+  --font-size-base: 1rem;      /* 16px */
+  --font-size-small: 0.875rem; /* 14px */
+  --font-size-p: 1.125rem;     /* 18px */
+  --font-size-h3: 1.5rem;      /* 24px */
+  --font-size-h2: 2.25rem;     /* 36px */
+  --font-size-h1: 3.5rem;      /* 56px */
+  --font-size-btn: 1.1rem;
 }
 
 .light-theme {
   --background-image: url('../images/backgrounds/lamps.png');
   --text-color: #000000;
-  --accent-color: #ff0000;
+  --accent-color: #cf0f0f;
+  --field-bg: rgba(0, 0, 0, 0.05);
+  --box-bg: rgba(255, 255, 255, 0.8);
   background-color: #f1f1f1;
 }
 
@@ -23,31 +25,35 @@
   --background-image: url('../images/backgrounds/lamps-inverted.png');
   --text-color: #ffffff;
   --accent-color: #ff0000;
-  background-color: #000000;
-  --filter-invert: invert(100%);
+  --field-bg: #000000;
+  --box-bg: rgba(0, 0, 0, 0.75);
+  background-color: #050000;
+  /* Filtro de imagem dramático conforme Figma */
+  --filter-invert: brightness(0.8) contrast(1.4) saturate(0.5) hue-rotate(180deg);
 }
 
-/* ========================================================
-   2. ESTILOS BASE E LAYOUT (BODY E CONTAINERS)
-   ======================================================== */
-
+/* =======================================================
+   2. ESTILOS BASE E LAYOUT
+   ======================================================= */
 body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Rubik', sans-serif;
+  background-color: var(--bg-color);
   background-image: var(--background-image);
   color: var(--text-color);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  min-height: 100vh;
-  margin: 0;
-  font-family: 'Rubik', sans-serif;
   transition: background-image 0.8s ease-in-out, background-color 0.8s ease-in-out, color 0.5s ease-in-out;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
@@ -66,146 +72,146 @@ header, #section-form {
   text-align: left;
 }
 
-/* ===========================================================
-   3. LEGIBILIDADE E TEXTO
-   =========================================================== */
+/* =======================================================
+   3. TIPOGRAFIA E ACESSIBILIDADE
+   ======================================================= */
+h1 { font-size: var(--font-size-h1); text-transform: uppercase; }
+h2 { font-size: var(--font-size-h2); text-transform: uppercase; }
+h3 { font-size: var(--font-size-h3); text-transform: uppercase; }
 
-/* --- Títulos --- */
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
-
-/* --- Parágrafos --- */
 header p, 
 section p, 
 .section-texts p {
-  padding: 1.5rem;
+  padding: 2rem;
   border-radius: 8px;
   font-size: var(--font-size-p);
-  line-height: 1.6; 
+  line-height: 1.8; 
   backdrop-filter: blur(5px);
+  background-color: var(--box-bg);
   border-left: 4px solid var(--accent-color);
   margin-top: 10px;
-  transition: background-color 0.5s, color 0.5s;
+  transition: all 0.5s ease;
 }
 
-/* Ajustes de cor por tema para os parágrafos */
-.light-theme header p, 
-.light-theme section p, 
-.light-theme .section-texts p {
-  background-color: rgba(255, 255, 255, 0.8);
-  color: #000000;
-}
-
-.dark-theme header p, 
-.dark-theme section p, 
-.dark-theme .section-texts p {
-  background-color: rgba(0, 0, 0, 0.75);
-  color: #ffffff;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.9);
-}
-
-.dark-theme h1, 
-.dark-theme h2, 
-.dark-theme h3 {
+.dark-theme h1, .dark-theme h2, .dark-theme h3 {
   color: var(--accent-color);
-  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+  text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
 }
 
-/* ============================================================
-   4. FORMULÁRIOS E INPUTS
-   ============================================================ */
-
+/* =======================================================
+   4. FORMULÁRIO (FIDELIDADE FIGMA)
+   ======================================================= */
 #section-form {
-  background: rgba(0, 0, 0, 0.7);
-  border: 2px solid var(--accent-color);
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+  background-color: #cf0f0f;
+  border-radius: 0;
+  padding: 40px;
   margin-top: 50px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* Sombra sólida preta do Mundo Normal */
+  box-shadow: 15px 15px 0px #000000;
+}
+
+/* --- Estilo Mundo Invertido (Figma) --- */
+.dark-theme #section-form {
+  background-color: #ff0000;
+  /* Sombra sólida branca no Mundo Invertido */
+  box-shadow: 15px 15px 0px #ffffff;
 }
 
 #section-form h2, 
-#section-form h3 {
-  font-family: 'Rubik', sans-serif;
+#section-form h3, 
+#section-form label {
+  color: #ffffff;
+  text-align: left;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--accent-color);
-  text-align: center;
+  margin: 0;
 }
 
-.form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-/* --- Formulário e Inputs --- */
-label {
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  color: var(--accent-color);
-  font-size: var(--font-size-small);
-}
-
+/* --- Inputs e Campos --- */
 input, textarea {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  width: 100%;
+  background-color: #000000;
+  border: none;
   padding: 12px;
-  color: white;
+  color: #ffffff;
   font-family: inherit;
-  transition: all 0.3s ease;
+  box-sizing: border-box;
 }
 
-.light-theme input, 
-.light-theme textarea {
-  background: rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #000;
+/* --- Botão de Inscrição (Figma) --- */
+#btnSubscribe {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  align-self: center;
+  transition: transform 0.3s ease;
 }
 
-input:focus, 
-textarea:focus {
-  outline: none;
-  border: 2px solid var(--accent-color);
-  background: rgba(255, 0, 0, 0.05); /* Foco Neon */
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+.dark-theme #btnSubscribe {
+  background-color: #ffffff;
+  color: #ff0000;
 }
 
-/* ============================================================
-   5. BOTÕES E ELEMENTOS INTERATIVOS
-   ============================================================ */
+#btnSubscribe:hover {
+  transform: scale(1.05);
+}
 
-#btnSubscribe, 
-#switch-theme-button {
+/* --- Ajuste de Texto Lateral --- */
+.form-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.form-extra-text {
+  max-width: 300px;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.form-extra-text span {
+  color: #ff0000;
+}
+
+.dark-theme .form-extra-text span {
+  color: #ffffff;
+  text-shadow: 0 0 10px #ff0000;
+}
+/* =======================================================
+   5. BOTÕES E INTERATIVIDADE
+   ======================================================= */
+#btnSubscribe, #switch-theme-button {
   background-color: var(--accent-color);
   color: white;
   border: none;
-  padding: 15px 25px;
-  font-weight: bold; /* Unificado */
+  padding: 18px 30px;
+  font-weight: 900;
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 4px 4px 0px #5e0000;
+  letter-spacing: 2px;
   font-size: var(--font-size-btn);
+  box-shadow: 5px 5px 0px #5e0000;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-#btnSubscribe:hover, 
-#switch-theme-button:hover {
+.dark-theme #btnSubscribe {
+  background-color: #ffffff;
+  color: #ff0000;
+  box-shadow: 4px 4px 0px #000000;
+}
+
+#btnSubscribe:hover, #switch-theme-button:hover {
   transform: scale(1.05);
-  background-color: #ff3333; /* Ajustado para hover Stranger */
   box-shadow: 0 0 20px var(--accent-color);
-}
-
-#btnSubscribe:active, 
-#switch-theme-button:active {
-  transform: scale(0.95);
-  box-shadow: 0px 0px 0px #5e0000;
 }
 
 #switch-theme-button {
@@ -214,65 +220,10 @@ textarea:focus {
   border-radius: 50px;
 }
 
-#btnSubscribe {
-  font-weight: 900; /* Mantendo sua preferência específica */
-}
-
-.dark-theme .invert-element {
-  filter: var(--filter-invert);
-}
-
-/* ============================================================
-   6. FOOTER E ELEMENTOS MULTIMÍDIA
-   ============================================================ */
-
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px 20px;
-  background-color: rgba(0, 0, 0, 0.2);
-  text-align: center;
-}
-
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  max-width: 600px;
-}
-
-.footer-images {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-
-.footer-images img {
-  height: 50px;
-  transition: transform 0.3s ease;
-}
-
-.footer-images img:hover {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-.playing {
-  animation: rotateTape 5s linear infinite;
-  filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.7)) !important;
-}
-
-/* ============================================================
-   7. EFEITOS ESPECIAIS E ANIMAÇÕES
-   ============================================================ */
-
-/* Ruído VHS */
-.vhs-noise {
-  position: relative;
-  overflow: hidden;
-}
-
+/* =======================================================
+   6. EFEITOS ESPECIAIS (VHS & NOISE)
+   ======================================================= */
+.vhs-noise { position: relative; overflow: hidden; }
 .vhs-noise::before {
   content: "";
   position: absolute;
@@ -282,7 +233,7 @@ footer {
   opacity: 0.03;
   pointer-events: none;
   z-index: 1;
-  animation: flicker 0.2s infinite;
+  animation: flicker 0.15s infinite;
 }
 
 @keyframes flicker {
@@ -290,50 +241,51 @@ footer {
   50% { opacity: 0.04; }
 }
 
+.dark-theme .invert-element { filter: var(--filter-invert); }
+
+/* =======================================================
+   7. RODAPÉ E ANIMAÇÃO DA FITA
+   ======================================================= */
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.footer-images img {
+  height: 55px;
+  transition: transform 0.3s ease;
+}
+
+.dark-theme .footer-images img {
+  border: 3px solid #ffffff;
+  background-color: #ffffff;
+  padding: 5px;
+}
+
 @keyframes rotateTape {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-/* ============================================================
-   8. RESPONSIVIDADE (MOBILE FIRST ADAPTATION)
-   ============================================================ */
+.playing {
+  animation: rotateTape 5s linear infinite;
+  filter: drop-shadow(0 0 15px var(--accent-color)) !important;
+}
 
+/* =======================================================
+   8. RESPONSIVIDADE
+   ======================================================= */
 @media (max-width: 768px) {
   :root {
-    /* Reduzindo a escala das fontes para telas menores */
     --font-size-h1: 2.2rem;
     --font-size-h2: 1.8rem;
-    --font-size-h3: 1.4rem;
     --font-size-p: 1rem;
-    --font-size-btn: 1rem;
   }
-
-  header {
-    padding: 20px 5%; /* Reduz o recuo lateral no mobile */
-    text-align: center;
-    min-height: auto;
-    padding-top: 80px;
-  }
-
-  .header-content {
-    text-align: center; /* Centraliza o texto no mobile para melhor estética */
-    margin: 0 auto;
-  }
-
-  header p, 
-  section p, 
-  .section-texts p {
-    padding: 1.2rem; /* Boxes um pouco menores para ganhar espaço */
-    text-align: left;
-  }
-
-  .footer-images {
-    flex-direction: column; /* Empilha o logo e a fita no celular */
-    gap: 20px;
-  }
-
-  #section-form {
-    padding: 20px; /* Mais espaço interno para o formulário no mobile */
-  }
+  header { padding: 80px 5% 20px; text-align: center; }
+  .header-content { text-align: center; margin: 0 auto; }
+  #section-form { padding: 25px; }
 }
