@@ -1,107 +1,80 @@
-<p align="center">
-    <img width="300" src="https://micheleambrosio.github.io/semana-frontend-mundo-invertido/assets/images/banner/logo.svg">
-</p>
 
--------
-Uma jornada para quem não tem medo do desconhecido. O caminho para o Mundo Invertido é incerto, repleto de obstáculos e perigos. Porém, a recompensa é grande: salvar Hawkings e o mundo todo das garras de Vecna. Você está preparado(a)? 
+# 🕯️ Stranger Things: Mundo Invertido (Legacy Evolution)
 
-## ▶️ Semana Front-end
-- [Live Dia 01](https://www.youtube.com/watch?v=FZgIQUDn8zo)
-- [Live Dia 02](https://www.youtube.com/watch?v=WHbhgxJLbN4)
-## 💻 Tecnologias
-- HTML
-- CSS
-- JavaScript
+![Logo Stranger Things](assets/images/banner/logo.svg)
 
-## 💬 Assuntos abordados
-- HTML
-    - Estruturação da página 
-    - Semântica
-    - Acessibilidade
-    - Web Scraping
-    - SEO
-- CSS
-    - Posicionamentos
-    - Pseudo-elementos
-    - Pseudo-classes
-    - Flexbox
-    - Animações 
-- JavaScript
-    - Introdução ao JavaScript
-    - Manipulação do DOM
-    - Introdução ao Firebase
-    - Integração com o Firebase
+Uma jornada para quem não tem medo do desconhecido. O projeto original, criado há quatro anos na **Semana Front-end da DIO**, foi aqui refatorado e elevado a um novo patamar técnico, focando em **Acessibilidade Moderna, Design Tokens e Experiência Imersiva.**
 
-## 🎨 Variáveis do Tema CSS
+---
+
+## 🚀 Evolução Técnica (O que eu adicionei)
+
+Nesta nova versão, implementei melhorias críticas que não existiam na base original:
+
+* **Design Tokens & Tipografia:** Sistema de variáveis CSS para uma escala de fontes responsiva e consistente.
+* **Acessibilidade de Elite (WCAG):** Implementação de caixas de texto com `backdrop-filter: blur` e opacidade controlada para garantir leitura sobre fundos complexos.
+* **Áudio Imersivo & Player Retrô:** Sincronização da trilha sonora com a troca de tema e criação de um player funcional na fita cassete do rodapé.
+* **Estética 80s Avançada:** Adição de efeitos de ruído VHS (TV Static) via CSS puro e filtros de neon.
+* **Responsividade Total:** Adaptação completa do layout para dispositivos móveis usando `media queries` modernas.
+
+---
+
+## 💻 Tecnologias & Conceitos
+
+* **HTML5:** Semântica avançada e atributos ARIA.
+* **CSS3:** Flexbox, Keyframes, Variáveis, Pseudo-elementos e Glassmorphism.
+* **JavaScript ES6+:** Manipulação de DOM, Audio API e gerenciamento de estado de tema.
+
+---
+
+## 🎨 Arquitetura de Variáveis (Refatorada)
+
+Utilizei uma estrutura de variáveis mais limpa e centralizada para facilitar a manutenção:
+
 ```css
-/*** VARIABLES & THEMES ***/
-
 :root {
-  --primary-color: #cf0f0f;
-  --primary-color-contrast: #ffffff;
-  --field-background-color: #000;
+  --accent-color: #ff0000;
+  --font-size-p: 1.125rem;
+  /* Design Tokens para temas dinâmicos */
 }
 
 .light-theme {
-  --page-background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 65%,
-    rgba(255, 255, 255, 0.75) 100%
-  );
-  --header-background-color: #e3e3e3;
-  --highlight-color: #000000;
-  --featured-font-family: "Archivo", sans-serif;
-  --character-top-image-src: url("../images/characters/kids-on-the-bike.svg");
-  --character-top-image-color: #ffffff;
-  --character-bottom-image-src: url("../images/characters/inverted-world-monster.svg");
-  --character-bottom-image-color: #e5e5e5;
-  --background-lamp-image: url("../images/backgrounds/lamps.png");
-  --footer-background-color: #b5bbbf;
+  --background-image: url('../images/backgrounds/lamps.png');
+  --text-color: #000000;
+  --box-bg: rgba(255, 255, 255, 0.8);
 }
 
 .dark-theme {
-  --page-background: linear-gradient(
-    180deg,
-    #050000 0%,
-    #130404 65%,
-    rgba(19, 1, 1, 0.75) 100%
-  );
-  --header-background-color: #220f0f;
-  --highlight-color: #ffffff;
-  --featured-font-family: "Rubik Glitch", sans-serif;
-  --character-bottom-image-src: url("../images/characters/kids-on-the-bike.svg");
-  --character-bottom-image-color: rgba(255, 255, 255, 0.1);
-  --character-top-image-src: url("../images/characters/inverted-world-monster.svg");
-  --character-top-image-color: #000;
-  --background-lamp-image: url("../images/backgrounds/lamps-inverted.png");
-  --footer-background-color: #000;
+  --background-image: url('../images/backgrounds/lamps-inverted.png');
+  --text-color: #ffffff;
+  --box-bg: rgba(0, 0, 0, 0.75);
 }
 ```
-## 🔗 Links auxiliares
 
-- [W3C - World Wide Web Consortium](http://w3c.org)
-- [WAI - Web Acessibility Initiative](https://www.w3.org/WAI/)
-- [WCAG 2](https://www.w3.org/WAI/WCAG21/quickref/) 
-- [Figma](https://www.figma.com/file/I3Q42CcVUziRN3iMfTrbfb/Stranger-Things?node-id=0%3A1) 
-- [Demo](https://micheleambrosio.github.io/semana-frontend-mundo-invertido/) 
-## 🌎 Nossas redes sociais
-<p>
-    <img align=left margin=10 width=80 src="https://avatars.githubusercontent.com/u/16018277?v=4"/>
-    <p>&nbsp&nbsp&nbspDiogo Medeiros Mainardes<br>
-    &nbsp&nbsp&nbsp<a href="http://instagram.com/diogomainardes.dev">Instagram</a>&nbsp;|&nbsp;<a href="https://github.com/diogomainardes">GitHub</a>&nbsp;|&nbsp;<a href="https://www.linkedin.com/in/diogomainardes/">LinkedIn</a>&nbsp;|&nbsp;<a href="https://www.twitch.tv/dimmbr">Twitch</a></p>
-</p>
-<br/><br/>
-<p>
-    <img align=left margin=10 width=80 src="https://avatars.githubusercontent.com/u/55519539?v=4"/>
-    <p>&nbsp&nbsp&nbspMichele Queiroz Ambrosio<br>
-    &nbsp&nbsp&nbsp<a href="http://instagram.com/programi_">Instagram</a>&nbsp;|&nbsp;<a href="https://github.com/micheleambrosio">GitHub</a>&nbsp;|&nbsp;<a href="https://www.linkedin.com/in/michele-ambrosio-a4899661/">LinkedIn</a>&nbsp;|&nbsp;<a href="https://www.twitch.tv/michele_ambrosio">Twitch</a></p>
-</p>
-<br/><br/>
-<p>
-    <img align=left margin=10 width=80 src="https://avatars.githubusercontent.com/u/3266640?v=4"/>
-    <p>&nbsp&nbsp&nbspRenan Johannsen de Paula <br>
-    &nbsp&nbsp&nbsp<a href="https://github.com/RenanJPaula">GitHub</a>&nbsp;|&nbsp;
-    <a href="https://www.linkedin.com/in/renanjpaula/">LinkedIn</a>
-    </p>
-</p>
+## 🔗 Links e Referências Originais
+
+Este projeto é um fork evolutivo baseado no conteúdo de:
+
+* W3C - World Wide Web Consortium
+
+* WAI - Web Acessibility Initiative
+
+* Figma Original do Projeto
+
+### ▶️ Aulas Originais (DIO)
+
+* Live Dia 01
+
+* Live Dia 02
+
+### 🌎 Créditos aos Autores Originais
+
+Este desafio foi inicialmente proposto e guiado pelos experts:
+
+* Diogo Medeiros Mainardes
+
+* Michele Queiroz Ambrosio
+
+* Renan Johannsen de Paula
+
+Projeto refatorado por Cristiano em 2026 para consolidar conhecimentos avançados de Front-end.
