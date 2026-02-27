@@ -101,91 +101,97 @@ section p,
 /* =======================================================
    4. FORMULÁRIO (FIDELIDADE FIGMA)
    ======================================================= */
+/* --- Container e Layout de Colunas --- */
 #section-form {
-  background-color: #cf0f0f;
-  border-radius: 0;
-  padding: 40px;
-  margin-top: 50px;
-  position: relative;
+  background-color: #cf0f0f; /* Vermelho Mundo Normal */
+  padding: 60px 40px;
+  box-shadow: 20px 20px 0px #000000; /* Sombra sólida preta */
+  margin: 50px auto;
+  border: none;
+  transition: all 0.5s ease;
+}
+
+.form-wrapper {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  /* Sombra sólida preta do Mundo Normal */
-  box-shadow: 15px 15px 0px #000000;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap; /* Ajuste para mobile */
 }
 
-/* --- Estilo Mundo Invertido (Figma) --- */
-.dark-theme #section-form {
-  background-color: #ff0000;
-  /* Sombra sólida branca no Mundo Invertido */
-  box-shadow: 15px 15px 0px #ffffff;
+/* --- Texto Lateral --- */
+.form-extra-text {
+  flex: 1;
+  min-width: 300px;
 }
 
-#section-form h2, 
-#section-form h3, 
-#section-form label {
-  color: #ffffff;
-  text-align: left;
+.form-extra-text h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1.1;
   text-transform: uppercase;
-  margin: 0;
+  text-shadow: none;
 }
 
-/* --- Inputs e Campos --- */
+.form-extra-text span {
+  color: #ffffff;
+  display: block;
+}
+
+/* --- Estilo Interno do Formulário --- */
+.form-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.form-container h3 {
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.form-container p {
+  background: none;
+  padding: 0;
+  border: none;
+  backdrop-filter: none;
+  font-size: 0.95rem;
+  margin-bottom: 25px;
+  color: #ffffff;
+}
+
+/* --- Inputs conforme Figma --- */
 input, textarea {
   width: 100%;
   background-color: #000000;
   border: none;
-  padding: 12px;
   color: #ffffff;
-  font-family: inherit;
+  padding: 15px;
+  margin-bottom: 15px;
   box-sizing: border-box;
 }
 
-/* --- Botão de Inscrição (Figma) --- */
-#btnSubscribe {
-  background-color: #000000;
+/* --- MUNDO INVERTIDO (DARK THEME) --- */
+.dark-theme #section-form {
+  background-color: #ff0000; /* Vermelho Vibrante */
+  box-shadow: 20px 20px 0px #ffffff; /* Sombra sólida branca */
+}
+
+.dark-theme .form-extra-text h2 {
   color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-weight: 900;
-  text-transform: uppercase;
-  cursor: pointer;
-  align-self: center;
-  transition: transform 0.3s ease;
+}
+
+.dark-theme .form-extra-text span {
+  color: #000000;
+  text-shadow: 0 0 10px #ffffff;
 }
 
 .dark-theme #btnSubscribe {
   background-color: #ffffff;
   color: #ff0000;
+  box-shadow: 5px 5px 0px #000000;
 }
 
-#btnSubscribe:hover {
-  transform: scale(1.05);
-}
-
-/* --- Ajuste de Texto Lateral --- */
-.form-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-}
-
-.form-extra-text {
-  max-width: 300px;
-  font-weight: 900;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  line-height: 1.1;
-}
-
-.form-extra-text span {
-  color: #ff0000;
-}
-
-.dark-theme .form-extra-text span {
-  color: #ffffff;
-  text-shadow: 0 0 10px #ff0000;
-}
 /* =======================================================
    5. BOTÕES E INTERATIVIDADE
    ======================================================= */
@@ -288,4 +294,51 @@ footer {
   header { padding: 80px 5% 20px; text-align: center; }
   .header-content { text-align: center; margin: 0 auto; }
   #section-form { padding: 25px; }
+}
+
+/* Container do Rodapé */
+footer {
+  position: relative; /* Necessário para ancorar as fitas */
+  padding: 80px 20px;
+  overflow: hidden; /* Evita scroll indesejado pelas fitas */
+  background-color: transparent;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 5; /* Garante que o texto fique acima das fitas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Estilo das Fitas Cassete */
+.cassette-tape {
+  position: absolute;
+  bottom: -20px; /* Ajuste conforme a altura desejada */
+  width: 250px;  /* Tamanho proporcional ao Figma */
+  opacity: 0.8;
+  z-index: 1;    /* Fica atrás do texto */
+  transition: transform 0.5s ease;
+}
+
+.cassette-tape.left {
+  left: -50px;
+  transform: rotate(-10deg);
+}
+
+.cassette-tape.right {
+  right: -50px;
+  transform: rotate(10deg);
+}
+
+/* No Mundo Invertido, as fitas podem ganhar o filtro invertido */
+.dark-theme .cassette-tape {
+  filter: var(--filter-invert);
+}
+
+/* Animação de rotação quando a música estiver tocando */
+.playing .cassette-tape {
+  animation: rotateTape 5s linear infinite;
 }

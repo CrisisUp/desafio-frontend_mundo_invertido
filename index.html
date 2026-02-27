@@ -89,21 +89,21 @@
 
         <div class="form-container">
           <h3>O Clube Dungeons & Dragons</h3>
-          <p>Para detona Vecna, os heróis de Stranger Things também precisam de você. O Clube de D&D mais famoso de
+          <p>Para detonar Vecna, os heróis de Stranger Things também precisam de você. O Clube de D&D mais famoso de
             Hawkins está com vagas abertas.</p>
 
           <form>
             <label for="name">Nome Completo</label>
-            <input type="text" id="name" name="name">
+            <input type="text" id="name" name="name" placeholder="Digite seu nome">
 
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="seu@email.com">
 
             <label for="level">Level</label>
-            <input type="text" id="level" name="level">
+            <input type="number" id="level" name="level" placeholder="1">
 
             <label for="character">Personagem</label>
-            <textarea id="character" name="character" rows="3"></textarea>
+            <textarea id="character" name="character" rows="3" placeholder="Qual seu personagem?"></textarea>
 
             <button type="submit" id="btnSubscribe">Se Inscrever</button>
           </form>
@@ -113,20 +113,19 @@
   </main>
 
   <footer>
-    <p>
-      Projeto construído para fins didáticos, com o objetivo de colocar em prática os conhecimentos de HTML, CSS e
-      JavaScript aprendidos na DIO._
-    </p>
-    <div class="footer-images">
-      <img src="assets/images/footer/logo.svg" alt="Logo DIO" class="invert-element">
-      <img src="assets/images/footer/tape.svg" alt="Fita Cassete Stranger Things">
+    <div class="footer-content">
+      <p>Projeto construído para fins didáticos, com o objetivo de colocar em prática os conhecimentos de HTML, CSS e
+        JavaScript aprendidos na DIO.</p>
+      <img src="assets/images/footer/logo.svg" alt="Logo DIO" class="dio-logo">
+    </div>
+
+    <div class="cassette-container">
+      <img src="assets/images/footer/tape.svg" alt="Fita Esquerda" class="cassette-tape left">
+      <img src="assets/images/footer/tape.svg" alt="Fita Direita" class="cassette-tape right">
     </div>
   </footer>
 
   <script type="module" src="assets/js/main.js"></script>
-  <script>
-
-  </script>
 </body>
 
 </html>
