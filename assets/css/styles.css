@@ -2,14 +2,14 @@
    1. VARIÁVEIS E TEMAS (DESIGN TOKENS)
    ======================================================= */
 :root {
-  /* Escala de Fontes */
+  /* Escala de Fontes Proporcional */
   --font-size-base: 1rem;      /* 16px */
-  --font-size-small: 0.875rem; /* 14px */
-  --font-size-p: 1.125rem;     /* 18px */
+  --font-size-small: 1rem;     /* 16px */
+  --font-size-p: 1.5rem;       /* 24px */
   --font-size-h3: 1.5rem;      /* 24px */
   --font-size-h2: 2.25rem;     /* 36px */
   --font-size-h1: 3.5rem;      /* 56px */
-  --font-size-btn: 1.1rem;
+  --font-size-btn: 1.3rem;
 }
 
 .light-theme {
@@ -40,7 +40,6 @@ body {
   padding: 0;
   min-height: 100vh;
   font-family: 'Rubik', sans-serif;
-  background-color: var(--bg-color);
   background-image: var(--background-image);
   color: var(--text-color);
   background-size: cover;
@@ -57,11 +56,6 @@ body {
   box-sizing: border-box;
 }
 
-header, footer {
-  padding-left: 5%;
-  padding-right: 5%;
-}
-
 header, #section-form {
   position: relative;
   z-index: 2;
@@ -70,6 +64,7 @@ header, #section-form {
 .header-content {
   max-width: 800px;
   text-align: left;
+  padding-left: 5%;
 }
 
 /* =======================================================
@@ -99,15 +94,43 @@ section p,
 }
 
 /* =======================================================
-   4. FORMULÁRIO (FIDELIDADE FIGMA)
+   4. GALERIA DE FOTOS (ALINHAMENTO FIGMA)
    ======================================================= */
-/* --- Container e Layout de Colunas --- */
+.photo-gallery {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.gallery-image {
+  flex: 1;
+  min-width: 200px;
+  height: 250px;
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all 0.5s ease;
+}
+
+.light-theme .gallery-image { border-color: #000000; }
+
+.dark-theme .gallery-image {
+  border: 4px solid #ffffff;
+  background-color: #ffffff;
+  padding: 5px;
+  filter: brightness(0.8) contrast(1.2);
+}
+
+/* =======================================================
+   5. FORMULÁRIO (DUAS COLUNAS E SOMBRAS SÓLIDAS)
+   ======================================================= */
 #section-form {
-  background-color: #cf0f0f; /* Vermelho Mundo Normal */
+  background-color: #cf0f0f;
   padding: 60px 40px;
-  box-shadow: 20px 20px 0px #000000; /* Sombra sólida preta */
+  box-shadow: 20px 20px 0px #000000; /* Sombra sólida sem blur */
   margin: 50px auto;
-  border: none;
   transition: all 0.5s ease;
 }
 
@@ -116,51 +139,17 @@ section p,
   align-items: center;
   justify-content: space-between;
   gap: 50px;
-  flex-wrap: wrap; /* Ajuste para mobile */
+  flex-wrap: wrap;
 }
 
-/* --- Texto Lateral --- */
-.form-extra-text {
-  flex: 1;
-  min-width: 300px;
-}
+.form-extra-text { flex: 1; min-width: 300px; }
+.form-extra-text h2 { font-size: 2.5rem; font-weight: 900; color: #000000; line-height: 1.1; }
+.form-extra-text span { color: #ffffff; display: block; }
 
-.form-extra-text h2 {
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #000000;
-  line-height: 1.1;
-  text-transform: uppercase;
-  text-shadow: none;
-}
+.form-container { flex: 1; min-width: 300px; }
+.form-container h3, .form-container p { color: #ffffff; }
+.form-container p { background: none; border: none; padding: 0; backdrop-filter: none; font-size: 0.95rem; }
 
-.form-extra-text span {
-  color: #ffffff;
-  display: block;
-}
-
-/* --- Estilo Interno do Formulário --- */
-.form-container {
-  flex: 1;
-  min-width: 300px;
-}
-
-.form-container h3 {
-  color: #ffffff;
-  margin-bottom: 15px;
-}
-
-.form-container p {
-  background: none;
-  padding: 0;
-  border: none;
-  backdrop-filter: none;
-  font-size: 0.95rem;
-  margin-bottom: 25px;
-  color: #ffffff;
-}
-
-/* --- Inputs conforme Figma --- */
 input, textarea {
   width: 100%;
   background-color: #000000;
@@ -171,35 +160,23 @@ input, textarea {
   box-sizing: border-box;
 }
 
-/* --- MUNDO INVERTIDO (DARK THEME) --- */
+/* Mundo Invertido */
 .dark-theme #section-form {
-  background-color: #ff0000; /* Vermelho Vibrante */
-  box-shadow: 20px 20px 0px #ffffff; /* Sombra sólida branca */
+  background-color: #ff0000;
+  box-shadow: 20px 20px 0px #ffffff;
 }
 
-.dark-theme .form-extra-text h2 {
-  color: #ffffff;
-}
-
-.dark-theme .form-extra-text span {
-  color: #000000;
-  text-shadow: 0 0 10px #ffffff;
-}
-
-.dark-theme #btnSubscribe {
-  background-color: #ffffff;
-  color: #ff0000;
-  box-shadow: 5px 5px 0px #000000;
-}
+.dark-theme .form-extra-text h2 { color: #ffffff; }
+.dark-theme .form-extra-text span { color: #000000; text-shadow: 0 0 10px #ffffff; }
 
 /* =======================================================
-   5. BOTÕES E INTERATIVIDADE
+   6. BOTÕES E INTERATIVIDADE
    ======================================================= */
 #btnSubscribe, #switch-theme-button {
   background-color: var(--accent-color);
   color: white;
   border: none;
-  padding: 18px 30px;
+  padding: 15px 25px;
   font-weight: 900;
   cursor: pointer;
   text-transform: uppercase;
@@ -209,25 +186,47 @@ input, textarea {
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.dark-theme #btnSubscribe {
-  background-color: #ffffff;
-  color: #ff0000;
-  box-shadow: 4px 4px 0px #000000;
+.dark-theme #btnSubscribe { background-color: #ffffff; color: #ff0000; box-shadow: 5px 5px 0px #000000; }
+
+#btnSubscribe:hover, #switch-theme-button:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--accent-color); }
+
+/* =======================================================
+   7. RODAPÉ E FITAS DECORATIVAS
+   ======================================================= */
+footer {
+  position: relative;
+  padding: 80px 20px;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-#btnSubscribe:hover, #switch-theme-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px var(--accent-color);
+.footer-content { position: relative; z-index: 5; }
+
+.cassette-tape {
+  position: absolute;
+  bottom: -20px;
+  width: 250px;
+  opacity: 0.8;
+  z-index: 1;
+  transition: transform 0.5s ease;
 }
 
-#switch-theme-button {
-  display: block;
-  margin: 20px auto;
-  border-radius: 50px;
+.cassette-tape.left { left: -50px; transform: rotate(-10deg); }
+.cassette-tape.right { right: -50px; transform: rotate(10deg); }
+
+.dark-theme .cassette-tape { filter: var(--filter-invert); }
+
+/* Animação */
+@keyframes rotateTape { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+.playing .cassette-tape {
+  animation: rotateTape 5s linear infinite;
+  filter: drop-shadow(0 0 15px var(--accent-color)) !important;
 }
 
 /* =======================================================
-   6. EFEITOS ESPECIAIS (VHS & NOISE)
+   8. EFEITOS ESPECIAIS E RESPONSIVIDADE
    ======================================================= */
 .vhs-noise { position: relative; overflow: hidden; }
 .vhs-noise::before {
@@ -242,103 +241,11 @@ input, textarea {
   animation: flicker 0.15s infinite;
 }
 
-@keyframes flicker {
-  0%, 100% { opacity: 0.02; }
-  50% { opacity: 0.04; }
-}
+@keyframes flicker { 0%, 100% { opacity: 0.02; } 50% { opacity: 0.04; } }
 
-.dark-theme .invert-element { filter: var(--filter-invert); }
-
-/* =======================================================
-   7. RODAPÉ E ANIMAÇÃO DA FITA
-   ======================================================= */
-footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 20px;
-  background-color: rgba(0, 0, 0, 0.4);
-  text-align: center;
-}
-
-.footer-images img {
-  height: 55px;
-  transition: transform 0.3s ease;
-}
-
-.dark-theme .footer-images img {
-  border: 3px solid #ffffff;
-  background-color: #ffffff;
-  padding: 5px;
-}
-
-@keyframes rotateTape {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.playing {
-  animation: rotateTape 5s linear infinite;
-  filter: drop-shadow(0 0 15px var(--accent-color)) !important;
-}
-
-/* =======================================================
-   8. RESPONSIVIDADE
-   ======================================================= */
 @media (max-width: 768px) {
-  :root {
-    --font-size-h1: 2.2rem;
-    --font-size-h2: 1.8rem;
-    --font-size-p: 1rem;
-  }
-  header { padding: 80px 5% 20px; text-align: center; }
-  .header-content { text-align: center; margin: 0 auto; }
-  #section-form { padding: 25px; }
-}
-
-/* Container do Rodapé */
-footer {
-  position: relative; /* Necessário para ancorar as fitas */
-  padding: 80px 20px;
-  overflow: hidden; /* Evita scroll indesejado pelas fitas */
-  background-color: transparent;
-}
-
-.footer-content {
-  position: relative;
-  z-index: 5; /* Garante que o texto fique acima das fitas */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Estilo das Fitas Cassete */
-.cassette-tape {
-  position: absolute;
-  bottom: -20px; /* Ajuste conforme a altura desejada */
-  width: 250px;  /* Tamanho proporcional ao Figma */
-  opacity: 0.8;
-  z-index: 1;    /* Fica atrás do texto */
-  transition: transform 0.5s ease;
-}
-
-.cassette-tape.left {
-  left: -50px;
-  transform: rotate(-10deg);
-}
-
-.cassette-tape.right {
-  right: -50px;
-  transform: rotate(10deg);
-}
-
-/* No Mundo Invertido, as fitas podem ganhar o filtro invertido */
-.dark-theme .cassette-tape {
-  filter: var(--filter-invert);
-}
-
-/* Animação de rotação quando a música estiver tocando */
-.playing .cassette-tape {
-  animation: rotateTape 5s linear infinite;
+  :root { --font-size-h1: 2.2rem; --font-size-h2: 1.8rem; --font-size-p: 1rem; }
+  .form-wrapper { flex-direction: column; text-align: center; }
+  .header-content { text-align: center; padding-left: 0; }
+  #section-form { padding: 30px 20px; }
 }
